@@ -1,4 +1,4 @@
-## Automatic-Timetable-Generation
+# Automatic-Timetable-Generation
 A comprehensive web application for creating and managing academic timetables for educational institutions.
 ## Features
 * Automatic timetable generation
