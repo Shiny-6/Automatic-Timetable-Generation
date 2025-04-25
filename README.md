@@ -9,14 +9,14 @@ A comprehensive web application for creating and managing academic timetables fo
 * Mobile-responsive design
 * Batch rotation for lab sessions
 # Project Setup
-Clone the repository
-Install dependencies with npm install
-Start the development server with npm run dev
-Open your browser to the URL shown in the terminal
+1 Clone the repository
+2 Install dependencies with npm install
+3 Start the development server with npm run dev
+4 Open your browser to the URL shown in the terminal
 # Technologies
-React
-TypeScript
-Tailwind CSS
-Shadcn UI
-React Router
-Vite
+* React
+* TypeScript
+* Tailwind CSS
+* Shadcn UI
+* React Router
+* Vite
