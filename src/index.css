@@ -1,0 +1,242 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out forwards;
+}
+
+/* Timetable specific styles */
+.timetable-grid {
+  display: grid;
+  grid-template-columns: 80px repeat(6, 1fr);
+  gap: 1px;
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .timetable-grid {
+    grid-template-columns: 60px repeat(6, minmax(80px, 1fr));
+    overflow-x: auto;
+    width: 100%;
+  }
+}
+
+@media (max-width: 640px) {
+  .timetable-grid {
+    grid-template-columns: 50px repeat(6, minmax(70px, 1fr));
+    font-size: 0.75rem;
+  }
+}
+
+.timetable-header,
+.timetable-time,
+.timetable-cell {
+  padding: 0.75rem;
+  text-align: center;
+  border: 1px solid hsl(var(--border));
+}
+
+@media (max-width: 640px) {
+  .timetable-header,
+  .timetable-time,
+  .timetable-cell {
+    padding: 0.5rem 0.25rem;
+  }
+}
+
+.timetable-header {
+  font-weight: bold;
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.timetable-time {
+  font-weight: bold;
+  background-color: hsl(var(--secondary));
+}
+
+.timetable-cell {
+  background-color: hsl(var(--background));
+  min-height: 80px;
+  transition: background-color 0.2s;
+}
+
+@media (max-width: 640px) {
+  .timetable-cell {
+    min-height: 60px;
+  }
+}
+
+.timetable-cell:hover {
+  background-color: hsl(var(--accent));
+}
+
+.lab-slot {
+  background-color: rgba(var(--primary), 0.1);
+  font-weight: 500;
+}
+
+.break-slot {
+  background-color: #f0f4f8;
+  font-style: italic;
+}
+
+.lunch-slot {
+  background-color: #f3f4f6;
+  font-style: italic;
+}
+
+.free-slot {
+  background-color: rgba(var(--muted), 0.3);
+  font-style: italic;
+  color: hsl(var(--muted-foreground));
+}
+
+/* Mobile responsive styles */
+.mobile-timetable-container {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+  
+  .print-only {
+    display: block !important;
+  }
+  
+  .timetable-container {
+    width: 100%;
+    overflow: visible;
+  }
+
+  body {
+    margin: 0;
+    padding: 1cm;
+  }
+}
+
+.print-only {
+  display: none;
+}
+
+/* Mobile responsive enhancements */
+@media (max-width: 768px) {
+  .responsive-card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .responsive-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .responsive-flex {
+    flex-direction: column;
+  }
+  
+  /* Ensure inputs are properly sized on mobile */
+  input, select, textarea {
+    max-width: 100%;
+  }
+}
